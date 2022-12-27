@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>SpringBooks</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+
+  <h1>Edit song: </h1>
+  <form th:action="@{/editsong}"
+        th:object="${songForm}" method="post">
+    <p>Title:
+      <input type="text" th:field="*{title}"/>
+    </p>
+    <p>Singer:
+      <input type="text" th:field="*{singer}"/>
+    </p>
+    <p>New title:
+      <input type="text" th:field="*{newTitle}"/>
+    </p>
+    <p>New singer:
+      <input type="text" th:field="*{newSinger}"/>
+    </p>
+    <input class="button-main-page" type="submit" value="Update"/>
+  </form>
+  <div th:if="${errorMessage!=null}"  th:utext="${errorMessage}"
+       style = "color:red;font-style:italic;">
+  </div>
+</div>
+</body>
+</html>
